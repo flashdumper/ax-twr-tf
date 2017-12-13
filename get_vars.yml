@@ -1,0 +1,9 @@
+---
+- name: Get Instance facts
+  hosts: all
+  gather_facts: false
+  tasks:
+  - name: debug on instances
+    debug: 
+      var: hostvars[inventory_hostname]
+    when: inventory_hostname == tf_name
