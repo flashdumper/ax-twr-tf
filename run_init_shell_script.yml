@@ -10,6 +10,9 @@
   - set_fact:
       ec2_output: "{{ tf_vm.stdout|from_json }}"
 
+  - set_fact:
+      vm_dns: "{{ ec2_output.modules[0].resources['aws_instance.web4'].primary.attributes.public_dns }}"
+
   - name: debug on json.primary
     debug:
       var: ec2_output
@@ -18,6 +21,7 @@
     debug:
 #      var: ec2_output.modules.resources.aws_instance.web4.primary.attributes.public_dns
       var: ec2_output.modules[0].resources['aws_instance.web4'].primary.attributes.public_dns
+      var: vm_dns
 #      msg: '{{ec2_output.modules}}'
 
 
