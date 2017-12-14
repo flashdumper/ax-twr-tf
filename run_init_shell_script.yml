@@ -24,7 +24,7 @@
       var: vm_dns
 #      msg: '{{ec2_output.modules}}'
 
-- hosts: "{{ lookup('env','vm_dns') }}"
+- hosts: "{{ vm_dns }}"
   gather_facts: false
   tasks:
   - file:
