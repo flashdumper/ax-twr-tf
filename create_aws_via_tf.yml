@@ -17,15 +17,15 @@
       var: tf_vm.results
 
 
-- name: Include all .json and .jsn files in vars/all and all nested directories (2.3)
-  include_vars:
-    dir: '/home/ec2-user'
-    files_matching: 'terraform.tfstate'
-    extensions:
+  - name: Include all .json and .jsn files in vars/all and all nested directories (2.3)
+    include_vars:
+      dir: '/home/ec2-user'
+      files_matching: 'terraform.tfstate'
+      extensions:
         - json
         - jsn
 	- tfstate
-    name: tf_vm_vars
+      name: tf_vm_vars
 
   - name: debug on instances
     debug:
