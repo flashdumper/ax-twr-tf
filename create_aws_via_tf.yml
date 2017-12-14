@@ -25,7 +25,7 @@
         - json
         - jsn
 	- tfstate
-      name: tf_vm_vars
+    name: tf_vm_vars
 
   - name: debug on instances
     debug:
