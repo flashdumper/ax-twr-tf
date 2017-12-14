@@ -13,6 +13,9 @@
   - set_fact:
       vm_dns: "{{ ec2_output.modules[0].resources['aws_instance.web4'].primary.attributes.public_dns }}"
 
+  - debug: 
+      var: vm_dns
+
   - name: install web app 
     yum: name=httpd state=latest
     delegate_to: "{{ vm_dns }}"
