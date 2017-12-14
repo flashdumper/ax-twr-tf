@@ -21,7 +21,7 @@
   - name: Include json file
     include_vars:
 #      dir: '/home/ec2-user'
-      file: 'terraform.tfstate'
+      file: '/home/ec2-user/terraform.tfstate'
       name: tf_vm_vars
 #      extensions:
 #        - json
