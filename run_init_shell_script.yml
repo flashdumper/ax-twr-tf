@@ -25,4 +25,9 @@
   - name: run shell script 
     script: simple_script.sh
     delegate_to: "{{ vm_dns }}"
-     
+    register: command_result
+#    failed_when: "'FAILED' in command_result.stderr"
+
+  - name: debug on json.primary
+    debug:
+      var: command_result
