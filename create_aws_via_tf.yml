@@ -13,10 +13,16 @@
      chdir: /home/ec2-user
     register: tf_vm
 
+  - set_fact:
+      ec2_output: "{{ tf_vm.stdout|from_json }}"
+
   - name: debug on instances
     debug:
       var: tf_vm.stdout_lines
 
+  - name: debug on instances
+    debug:
+      var: ec2_output
 
   - name: Include json file
     include_vars:
