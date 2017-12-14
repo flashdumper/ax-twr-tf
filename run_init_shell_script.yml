@@ -16,6 +16,6 @@
   - name: debug on json.public_dns
     debug:
 #      var: ec2_output.modules.resources.aws_instance.web4.primary.attributes.public_dns
-      var: ec2_output.value['modules']
+      var: ec2_output.value
 
 
