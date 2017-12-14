@@ -24,4 +24,11 @@
       var: vm_dns
 #      msg: '{{ec2_output.modules}}'
 
+- hosts: '{{vm_dns}}'
+  gather_facts: false
+  tasks:
+  - file:
+      path: /tmp/script.sh
+      state: touch
+      mode: 0755
 
