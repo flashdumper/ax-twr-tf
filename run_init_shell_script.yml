@@ -13,22 +13,16 @@
   - set_fact:
       vm_dns: "{{ ec2_output.modules[0].resources['aws_instance.web4'].primary.attributes.public_dns }}"
 
-  - name: debug on json.primary
-    debug:
-      var: ec2_output
+#  - name: debug on json.primary
+#    debug:
+#      var: ec2_output
 
-  - name: debug on json.public_dns
-    debug:
-#      var: ec2_output.modules.resources.aws_instance.web4.primary.attributes.public_dns
-      var: ec2_output.modules[0].resources['aws_instance.web4'].primary.attributes.public_dns
-      var: vm_dns
-#      msg: '{{ec2_output.modules}}'
+#  - name: debug on json.public_dns
+#    debug:
+#      var: ec2_output.modules[0].resources['aws_instance.web4'].primary.attributes.public_dns
+#      var: vm_dns
 
-#- hosts: "{{ vm_dns }}"
-#  gather_facts: false
-#  tasks:
-  - file:
-      path: /tmp/script.sh
-      state: touch
-      mode: 0755
+  - name: run shell script 
+    script: simple_script.sh
     delegate_to: "{{ vm_dns }}"
+     
