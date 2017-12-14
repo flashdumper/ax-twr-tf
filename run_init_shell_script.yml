@@ -30,4 +30,4 @@
 
   - name: debug on json.primary
     debug:
-      var: command_result
+      var: command_result.stdout_lines
