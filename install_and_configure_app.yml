@@ -1,0 +1,24 @@
+- hosts: ec2-52-23-122-222.compute-1.amazonaws.com
+  gather_facts: false
+  tasks: 
+  - name: read json file and register
+    shell: cat /home/ec2-user/terraform.tfstate
+    args:
+     chdir: /home/ec2-user
+    register: tf_vm
+
+  - set_fact:
+      ec2_output: "{{ tf_vm.stdout|from_json }}"
+
+  - set_fact:
+      vm_dns: "{{ ec2_output.modules[0].resources['aws_instance.web4'].primary.attributes.public_dns }}"
+
+  - name: install web app 
+    yum: name=httpd state=latest
+    delegate_to: "{{ vm_dns }}"
+
+  - name: configure web app
+    copy:
+     dest: /var/www/html/index.html
+     content: "Configured By ansible Tower"
+    delegate_to: "{{ vm_dns }}"
