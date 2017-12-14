@@ -15,13 +15,13 @@
 
   - name: debug on instances
     debug:
-      var: tf_vm
+      var: tf_vm.stdout_lines
 
 
   - name: Include json file
     include_vars:
-#      dir: '/home/ec2-user'
-      file: '/home/ec2-user/terraform.tfstate'
+      dir: '/home/ec2-user'
+      file: 'terraform.tfstate'
       name: tf_vm_vars
 #      extensions:
 #        - json
