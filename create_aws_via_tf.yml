@@ -7,7 +7,7 @@
     args:
      chdir: /home/ec2-user
 
-  - name: 
+  - name: read json file and register
     shell: cat /home/ec2-user/terraform.tfstate
     args:
      chdir: /home/ec2-user
@@ -18,17 +18,17 @@
       var: tf_vm
 
 
-  - name: Include all .json and .jsn files in vars/all and all nested directories (2.3)
+  - name: Include json file
     include_vars:
-      dir: '/home/ec2-user'
-#      files_matching: 'terraform.tfstate'
+#      dir: '/home/ec2-user'
+      file: 'terraform.tfstate'
       name: tf_vm_vars
-      extensions:
-        - json
-        - jsn
-        - tfstate
+#      extensions:
+#        - json
+#        - jsn
+#        - tfstate
 
   - name: debug on instances
     debug:
-      var: tf_vm_vars.results
+      var: tf_vm_vars
 
