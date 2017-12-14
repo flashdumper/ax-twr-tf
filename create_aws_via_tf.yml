@@ -16,24 +16,7 @@
   - set_fact:
       ec2_output: "{{ tf_vm.stdout|from_json }}"
 
-  - name: debug on instances
-    debug:
-      var: tf_vm.stdout_lines
-
-  - name: debug on instances
+  - name: debug on json
     debug:
       var: ec2_output
-
-  - name: Include json file
-    include_vars:
-      dir: '/home/ec2-user'
-      name: tf_vm_vars
-      extensions:
-        - json
-        - jsn
-        - tfstate
-
-  - name: debug on instances
-    debug:
-      var: tf_vm_vars
 
