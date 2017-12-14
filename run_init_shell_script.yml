@@ -17,6 +17,6 @@
   - name: debug on json.public_dns
     debug:
 #      var: ec2_output.modules.resources.aws_instance.web4.primary.attributes.public_dns
-      msg: '{{ec2_output.modules.resources}}'
+      msg: '{{ec2_output.modules}}'
 
 
