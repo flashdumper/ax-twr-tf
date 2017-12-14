@@ -1,10 +1,5 @@
 - hosts: ec2-52-23-122-222.compute-1.amazonaws.com
   tasks: 
-  - name: login to tf and create instance from there
-    shell: /home/ec2-user/terraform apply -auto-approve
-    args:
-     chdir: /home/ec2-user
-
   - name: read json file and register
     shell: cat /home/ec2-user/terraform.tfstate
     args:
@@ -16,5 +11,6 @@
 
   - name: debug on json
     debug:
-      var: ec2_output
+      var: ec2_output.modules.resources.aws_instance.web4.primary.attributes.public_dns
+
 
