@@ -11,7 +11,7 @@
 
   - name: debug on json.primary
     debug:
-      var: ec2_output.modules.resources.aws_instance.web4.primary
+      var: ec2_output
 
   - name: debug on json.public_dns
     debug:
