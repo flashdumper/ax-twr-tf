@@ -1,5 +1,13 @@
 - hosts: ec2-52-23-122-222.compute-1.amazonaws.com
   tasks: 
+  - name: create template for terraforms
+    template: 
+     src: main.tf.j2
+     dest: /home/ec-user/main.tf
+     owner: ec2-user
+     group: ec2-user
+     mode: 0755
+
   - name: login to tf and create instance from there
     shell: /home/ec2-user/terraform apply -auto-approve
     args:

@@ -24,7 +24,6 @@
     service: name=httpd state=started enabled=yes 
     delegate_to: "{{ vm_dns }}"
 
-
   - name: configure web app
     copy:
      dest: /var/www/html/index.html

@@ -1,0 +1,16 @@
+provider "aws" {
+  region = "{{region}}"
+  access_key = "{{access_key}}"
+  secret_key = "{{secret_key}}"
+}
+
+resource "aws_instance" "web4" {
+  subnet_id = "subnet-c86b14e2"
+  security_groups = ["sg-ee828b9c"]
+  instance_type = "{{instance_type}}"
+  ami = "ami-c998b6b2"
+  key_name = "dzuev-key"
+  tags {
+    "Name" = "{{tf_aws_name}}"
+  }
+}
